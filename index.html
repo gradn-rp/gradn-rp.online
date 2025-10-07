@@ -123,7 +123,8 @@
         }
         .screenshots img { 
             width: 100%; 
-            height: auto; 
+            height: 200px; /* Фиксированная высота для ровных скриншотов */
+            object-fit: cover; /* Обрезка для равномерного вида */
             border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
@@ -238,10 +239,49 @@
             p { font-size: 1.1em; } 
             .characters { flex-direction: column; align-items: center; } 
             .characters img { max-width: 200px; } 
-            .screenshots-grid { grid-template-columns: 1fr; } 
-            nav ul { flex-direction: column; gap: 10px; } 
+            .screenshots-grid { 
+                grid-template-columns: 1fr; /* Одна колонка для мобильных */
+                gap: 15px; 
+            } 
+            .screenshots img { 
+                height: 200px; /* Та же высота для ровности */
+                object-fit: cover; 
+            } 
+            /* nav ul { flex-direction: column; gap: 10px; } */  /* Убрано, чтобы навигация оставалась горизонтальной */
+            nav { 
+                overflow-x: auto; /* Горизонтальная прокрутка, если не помещается */
+            } 
             .features { grid-template-columns: 1fr; } 
             .download-buttons { flex-direction: column; align-items: center; } 
+            .container { 
+                padding-left: 10px; 
+                padding-right: 10px; 
+            } 
+            img { 
+                max-width: 90%; /* Уменьшение для мобильных */
+                margin: 20px; 
+            } 
+        }
+        @media (max-width: 480px) { /* Дополнительный медиа-запрос для очень маленьких экранов */
+            h1 { font-size: 2em; } 
+            h2 { font-size: 1.8em; } 
+            p { font-size: 1em; } 
+            nav ul { 
+                gap: 15px; /* Уменьшение gap для навигации */
+            } 
+            nav a { 
+                font-size: 1em; 
+            } 
+            .screenshots { 
+                padding: 20px; 
+            } 
+            .game-description { 
+                padding: 20px; 
+            } 
+            button { 
+                padding: 15px 25px; 
+                font-size: 16px; 
+            } 
         }
     </style>
 </head>
